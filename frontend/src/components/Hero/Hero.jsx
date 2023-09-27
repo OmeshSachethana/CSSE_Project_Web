@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import { image1, image2, image3 } from '../../assets';
+import { image1, image2, image3, main } from '../../assets';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -40,14 +40,17 @@ const Hero = () => {
   return (
     <div className="hero">
       <Slider {...sliderSettings}>
-        <div>
-          <img src={image1} alt="Slide 1" />
+      <div>
+          <img src={main} alt="Slide 1" />
         </div>
         <div>
-          <img src={image2} alt="Slide 2" />
+          <img src={image1} alt="Slide 2" />
         </div>
         <div>
-          <img src={image3} alt="Slide 3" />
+          <img src={image2} alt="Slide 3" />
+        </div>
+        <div>
+          <img src={image3} alt="Slide 4" />
         </div>
         {/* Add more slides as needed */}
       </Slider>
