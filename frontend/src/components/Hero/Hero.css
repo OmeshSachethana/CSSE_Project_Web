@@ -1,0 +1,27 @@
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .arrow.prev {
+    left: 10px;
+  }
+  
+  .arrow.next {
+    right: 10px;
+  }
+  
+  .arrow span {
+    color: #fff;
+    font-size: 24px;
+  }
+  

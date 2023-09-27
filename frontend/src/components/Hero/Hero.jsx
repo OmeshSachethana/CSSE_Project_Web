@@ -1,13 +1,26 @@
-// components/Hero.jsx
 import React from 'react';
 import Slider from 'react-slick';
 
-import {image1, image2, image3} from '../assets';
+import { image1, image2, image3 } from '../../assets';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+//import '../styles/SliderArrows.css'; // Assuming you have a separate CSS file for styling the arrows
+import './hero.css'
 
 const Hero = () => {
+  const PrevArrow = ({ onClick }) => (
+    <div className="arrow prev" onClick={onClick}>
+      <span>&lt;</span>
+    </div>
+  );
+
+  const NextArrow = ({ onClick }) => (
+    <div className="arrow next" onClick={onClick}>
+      <span>&gt;</span>
+    </div>
+  );
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -16,6 +29,8 @@ const Hero = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     style: {
       width: '65%', // Adjust the width as per your requirement
       margin: '0 auto', // Center the slider
