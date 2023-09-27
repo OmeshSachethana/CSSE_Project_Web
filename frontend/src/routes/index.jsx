@@ -8,6 +8,7 @@ const PageRoutes = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        
       </Routes>
     </Router>
   )
