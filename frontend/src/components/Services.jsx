@@ -1,20 +1,8 @@
 import React from 'react';
 
+import { servicesData } from '../constants';
+
 const Services = () => {
-  const servicesData = [
-    {
-      title: 'Best Services',
-      description: 'We provide top-notch services to meet your needs.',
-    },
-    {
-      title: 'Best Teams',
-      description: 'Our teams are experienced and dedicated to excellence.',
-    },
-    {
-      title: 'Best Designs',
-      description: 'We create stunning designs to make your vision a reality.',
-    },
-  ];
 
   return (
     <div className="flex justify-center mt-10">
