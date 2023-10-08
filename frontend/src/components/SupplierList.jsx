@@ -17,7 +17,11 @@ const SupplierList = () => {
       <h1>Supplier List</h1>
       <ul>
         {suppliers.map((supplier) => (
-          <li key={supplier.id}>{supplier.name}</li>
+          <li key={supplier.id}>
+            {supplier.name} <br />
+            {supplier.email}
+            </li>
+          
         ))}
       </ul>
     </div>
