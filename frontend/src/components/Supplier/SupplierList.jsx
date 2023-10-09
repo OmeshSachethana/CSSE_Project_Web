@@ -1,11 +1,8 @@
-// SupplierList.jsx
-
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import {fetchSuppliers, deleteExistingSupplier} from '../../actions/supplierActions';
-
+import { fetchSuppliers, deleteExistingSupplier } from '../../actions/supplierActions';
 
 const SupplierList = () => {
   const dispatch = useDispatch();
@@ -27,30 +24,37 @@ const SupplierList = () => {
   };
 
   return (
-    
-    <div>
-        
-      <h1>Supplier List</h1>
+    <div className="max-w-3xl mx-auto py-6">
+      <h1 className="text-2xl font-bold mb-4">Supplier List</h1>
       <Link to="/suppliers/new">
-        <button>Create Supplier</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Create Supplier
+        </button>
       </Link>
-      <ul>
-            {suppliers.map((supplier) => {
-                console.log(supplier.id); // Add this line
-                return (
-                <li key={supplier.id}>
-                    {supplier.name} - {supplier.contactName} - {supplier.telephone} - {supplier.email}{' '}
-                    <Link to={`/suppliers/update/${supplier.id}`}>
-                    <button>Update</button>
-                    </Link>
-
-                    &nbsp;&nbsp;&nbsp;
-                    <button onClick={() => handleDelete(supplier.id)}>Delete</button>
-                </li>
-                );
-            })}
-        </ul>
-
+      <ul className="mt-4">
+        {suppliers.map((supplier) => {
+          return (
+            <li key={supplier.id} className="flex items-center justify-between mb-2">
+              <div>
+                <span className="font-semibold">{supplier.name}</span> - {supplier.contactName} - {supplier.telephone} - {supplier.email}{' '}
+              </div>
+              <div>
+                <Link to={`/suppliers/update/${supplier.id}`}>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+                    Update
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleDelete(supplier.id)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
