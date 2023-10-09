@@ -1,8 +1,7 @@
 const db = require('../firebaseConfig');
 
 class Supplier {
-  constructor(id, name, contactName, telephone, email) {
-    this.id = id;
+  constructor(name, contactName, telephone, email) {
     this.name = name;
     this.contactName = contactName;
     this.telephone = telephone;
@@ -11,12 +10,12 @@ class Supplier {
 
   static async getAll() {
     const snapshot = await db.collection('suppliers').get();
-    return snapshot.docs.map(doc => doc.data());
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   }
 
   static async getById(id) {
     const doc = await db.collection('suppliers').doc(id).get();
-    return doc.data();
+    return { id: doc.id, ...doc.data() };
   }
 
   static async create(supplierData) {
