@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 import { fetchSuppliers, deleteExistingSupplier } from '../../actions/supplierActions';
 
@@ -72,6 +73,7 @@ const SupplierList = () => {
         </table>
       </div>
     </div>
+    <Footer />
     </>
   );
 };
