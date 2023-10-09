@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Navbar from '../Navbar';
 
 import { fetchSuppliers, deleteExistingSupplier } from '../../actions/supplierActions';
 
@@ -24,6 +25,9 @@ const SupplierList = () => {
   };
 
   return (
+    <>
+    <Navbar />
+    <br /> <br /> <br />
     <div className="max-w-3xl mx-auto py-6">
       <h1 className="text-2xl font-bold mb-4">Supplier List</h1>
       <Link to="/suppliers/new">
@@ -68,6 +72,7 @@ const SupplierList = () => {
         </table>
       </div>
     </div>
+    </>
   );
 };
 

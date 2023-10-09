@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSupplierById, updateExistingSupplier } from '../../actions/supplierActions';
+import Navbar from '../Navbar';
+
 
 const SupplierUpdateForm = () => {
   const dispatch = useDispatch();
@@ -51,6 +53,9 @@ const SupplierUpdateForm = () => {
   };
 
   return (
+    <>
+    <Navbar />
+    <br /> <br /> <br />
     <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex">
         <div className="p-6">
@@ -110,6 +115,7 @@ const SupplierUpdateForm = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
