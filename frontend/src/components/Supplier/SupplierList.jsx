@@ -31,30 +31,42 @@ const SupplierList = () => {
           Create Supplier
         </button>
       </Link>
-      <ul className="mt-4">
-        {suppliers.map((supplier) => {
-          return (
-            <li key={supplier.id} className="flex items-center justify-between mb-2">
-              <div>
-                <span className="font-semibold">{supplier.name}</span> - {supplier.contactName} - {supplier.telephone} - {supplier.email}{' '}
-              </div>
-              <div>
-                <Link to={`/suppliers/update/${supplier.id}`}>
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
-                    Update
+      <div className="mt-4 overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-300">
+          <thead>
+            <tr>
+              <th className="py-2 px-4 border-b">Name</th>
+              <th className="py-2 px-4 border-b">Contact Name</th>
+              <th className="py-2 px-4 border-b">Telephone</th>
+              <th className="py-2 px-4 border-b">Email</th>
+              <th className="py-2 px-4 border-b">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {suppliers.map((supplier) => (
+              <tr key={supplier.id}>
+                <td className="py-2 px-4 border-b">{supplier.name}</td>
+                <td className="py-2 px-4 border-b">{supplier.contactName}</td>
+                <td className="py-2 px-4 border-b">{supplier.telephone}</td>
+                <td className="py-2 px-4 border-b">{supplier.email}</td>
+                <td className="py-2 px-4 border-b">
+                  <Link to={`/suppliers/update/${supplier.id}`}>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
+                      Update
+                    </button>
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(supplier.id)}
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                  >
+                    Delete
                   </button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(supplier.id)}
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Delete
-                </button>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
