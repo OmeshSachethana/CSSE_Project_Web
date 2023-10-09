@@ -1,8 +1,7 @@
-// SupplierForm.jsx
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createNewSupplier } from '../../actions/supplierActions';
+import Navbar from '../Navbar';
 
 const SupplierForm = () => {
   const dispatch = useDispatch();
@@ -33,41 +32,65 @@ const SupplierForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Supplier Name"
-        required
-      />
-      <input
-        type="text"
-        name="contactName"
-        value={formData.contactName}
-        onChange={handleChange}
-        placeholder="Contact Name"
-        required
-      />
-      <input
-        type="text"
-        name="telephone"
-        value={formData.telephone}
-        onChange={handleChange}
-        placeholder="Telephone"
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Email"
-        required
-      />
-      <button type="submit">Create Supplier</button>
-    </form>
+    <>
+    <Navbar />
+    <br /> <br /> <br />
+    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-m">
+
+          <div className="md:flex">
+              <div className="p-8">
+                  <h2 className="text-xl mb-2 font-semibold">Create New Supplier</h2>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                          <input
+                              type="text"
+                              name="name"
+                              value={formData.name}
+                              onChange={handleChange}
+                              placeholder="Supplier Name"
+                              required
+                              className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:border-blue-500" />
+                      </div>
+                      <div>
+                          <input
+                              type="text"
+                              name="contactName"
+                              value={formData.contactName}
+                              onChange={handleChange}
+                              placeholder="Contact Name"
+                              required
+                              className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:border-blue-500" />
+                      </div>
+                      <div>
+                          <input
+                              type="text"
+                              name="telephone"
+                              value={formData.telephone}
+                              onChange={handleChange}
+                              placeholder="Telephone"
+                              required
+                              className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:border-blue-500" />
+                      </div>
+                      <div>
+                          <input
+                              type="email"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              placeholder="Email"
+                              required
+                              className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:border-blue-500" />
+                      </div>
+                      <button
+                          type="submit"
+                          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none"
+                      >
+                          Create Supplier
+                      </button>
+                  </form>
+              </div>
+          </div>
+      </div></>
   );
 };
 
