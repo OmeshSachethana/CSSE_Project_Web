@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createNewSupplier } from '../../actions/supplierActions';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import { Link } from 'react-router-dom';
 
 const SupplierForm = () => {
   const dispatch = useDispatch();
@@ -88,7 +89,12 @@ const SupplierForm = () => {
               className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none"
             >
               Create Supplier
+            </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Link to="/suppliers">
+            <button className="bg-gray-300 text-black px-4 py-2 mb-4 rounded-md focus:outline-none">
+              Back
             </button>
+          </Link>
           </form>
         </div>
       </div>
