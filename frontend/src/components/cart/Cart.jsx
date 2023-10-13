@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeProduct, changeProductQuantity } from "../../slices/cartSlice";
 import { createNewOrder } from "../../actions/orderActions";
@@ -97,8 +98,8 @@ function Summary({ subTotal, tax, dispatch, products }) {
       approveStatus: "pending",
     };
     dispatch(createNewOrder(orderData))
-      .then((newOrderId) => {
-        console.log(`New order created with ID: ${newOrderId}`);
+      .then(() => {
+        alert("Order successfully sent for approval!");
       })
       .catch((error) => {
         console.error("Error creating order:", error);
@@ -134,6 +135,7 @@ function Summary({ subTotal, tax, dispatch, products }) {
 const TAX = 5;
 
 export default function Cart() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.cart);
 
@@ -180,7 +182,9 @@ export default function Cart() {
         ) : (
           <div className="empty-product">
             <h3>There are no products in your cart.</h3>
-            <button className="button1">Shopping now</button>
+            <button className="button1" onClick={() => navigate("/")}>
+              Shopping now
+            </button>
           </div>
         )}
       </main>
