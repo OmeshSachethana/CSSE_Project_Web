@@ -1,7 +1,7 @@
 const db = require("../firebaseConfig");
 
 class Order {
-  constructor(date, image, name, description, price, quantity, totalPrice) {
+  constructor(date, image, name, description, price, quantity, totalPrice, approveStatus) {
     this.date = date
     this.image = image;
     this.name = name;
@@ -9,6 +9,7 @@ class Order {
     this.price = price;
     this.quantity = quantity;
     this.totalPrice = totalPrice
+    this.approveStatus = approveStatus;
   }
 
   static async create(orderData) {

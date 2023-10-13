@@ -93,6 +93,7 @@ function Summary({ subTotal, tax, dispatch, products }) {
       date: new Date(),
       products: products,
       totalPrice: total,
+      approveStatus: "pending",
     };
     dispatch(createNewOrder(orderData))
       .then((newOrderId) => {
@@ -147,7 +148,8 @@ export default function Cart() {
     const valueInt = parseInt(value);
 
     if (value === "" || (valueInt > 0 && valueInt < 100)) {
-      dispatch(changeProductQuantity({ index, quantity: valueInt }));
+      const quantity = isNaN(valueInt) ? 0 : valueInt;
+      dispatch(changeProductQuantity({ index, quantity }));
     }
   };
 
