@@ -28,7 +28,7 @@
     color: #f58551;
   }
   
-  button {
+  .button1 {
     background-color: #16cc9b !important;
     border: 2px solid #16cc9b;
     color: #ffffff;
@@ -36,23 +36,23 @@
     cursor: pointer;
   }
   
-  button::after {
+  .button1::after {
     position: relative;
     right: 0;
     content: " \276f";
     transition: all 0.15s linear;
   }
   
-  button:hover {
+  .button1:hover {
     background-color: #f58551 !important;
     border-color: #f58551;
   }
   
-  button:hover::after {
+  .button1:hover::after {
     right: -5px;
   }
   
-  button:focus {
+  .button1:focus {
     outline: none;
   }
   

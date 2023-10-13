@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeProduct, changeProductQuantity } from "../../slices/cartSlice";
 import { createNewOrder } from "../../actions/orderActions";
 import "./cart.css";
 import Navbar from "../Navbar";
+import Footer from "../Footer";
 
 function Header({ itemCount }) {
   return (
@@ -96,8 +98,8 @@ function Summary({ subTotal, tax, dispatch, products }) {
       approveStatus: "pending",
     };
     dispatch(createNewOrder(orderData))
-      .then((newOrderId) => {
-        console.log(`New order created with ID: ${newOrderId}`);
+      .then(() => {
+        alert("Order successfully sent for approval!");
       })
       .catch((error) => {
         console.error("Error creating order:", error);
@@ -121,8 +123,8 @@ function Summary({ subTotal, tax, dispatch, products }) {
         </ul>
       </div>
 
-      <div className="checkout">
-        <button onClick={handleSubmit} type="button">
+      <div className="checkout pb-10">
+        <button className="button1" onClick={handleSubmit} type="button">
           Place Order
         </button>
       </div>
@@ -133,6 +135,7 @@ function Summary({ subTotal, tax, dispatch, products }) {
 const TAX = 5;
 
 export default function Cart() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.cart);
 
@@ -158,29 +161,35 @@ export default function Cart() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header itemCount={itemCount} />
 
-      {products.length > 0 ? (
-        <div>
-          <ProductList
-            products={products}
-            onChangeProductQuantity={onChangeProductQuantity}
-            onRemoveProduct={onRemoveProduct}
-          />
-          <Summary
-            subTotal={subTotal}
-            tax={TAX}
-            dispatch={dispatch}
-            products={products}
-          />
-        </div>
-      ) : (
-        <div className="empty-product">
-          <h3>There are no products in your cart.</h3>
-          <button>Shopping now</button>
-        </div>
-      )}
+      <main className="flex-grow">
+        {products.length > 0 ? (
+          <div>
+            <ProductList
+              products={products}
+              onChangeProductQuantity={onChangeProductQuantity}
+              onRemoveProduct={onRemoveProduct}
+            />
+            <Summary
+              subTotal={subTotal}
+              tax={TAX}
+              dispatch={dispatch}
+              products={products}
+            />
+          </div>
+        ) : (
+          <div className="empty-product">
+            <h3>There are no products in your cart.</h3>
+            <button className="button1" onClick={() => navigate("/")}>
+              Shopping now
+            </button>
+          </div>
+        )}
+      </main>
+
+      <Footer />
     </div>
   );
 }
