@@ -10,6 +10,7 @@ const Navbar = () => {
         <li><a href="#" className="text-white hover:text-blue-500">Accountant</a></li>
         <li><a href="/suppliers" className="text-white hover:text-blue-500">Supplier</a></li>
         <li><a href="#" className="text-white hover:text-blue-500">Manager</a></li>
+        <li><a href="/cart" className="text-white hover:text-blue-500">Cart</a></li>
         <li><a href="#" className="text-white hover:text-blue-500">Login</a></li>
       </ul>
     </nav>
