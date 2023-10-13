@@ -36,6 +36,10 @@ const cartSlice = createSlice({
       const index = action.payload;
       state.products = state.products.filter((_, i) => i !== index);
     },
+
+    clearCart(state) {
+      state.products = [];
+    },
   },
 });
 
@@ -43,6 +47,7 @@ export const {
   setProducts,
   changeProductQuantity,
   removeProduct,
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

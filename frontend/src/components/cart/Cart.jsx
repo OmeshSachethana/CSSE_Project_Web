@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeProduct, changeProductQuantity } from "../../slices/cartSlice";
+import { createNewOrder } from "../../actions/orderActions";
 import "./cart.css";
 import Navbar from "../Navbar";
 
@@ -83,13 +84,28 @@ function ProductList({ products, onChangeProductQuantity, onRemoveProduct }) {
   );
 }
 
-function Summary({ subTotal, tax }) {
+function Summary({ subTotal, tax, dispatch, products }) {
   const total = subTotal + tax;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let orderData = {
+      date: new Date(),
+      products: products,
+      totalPrice: total,
+    };
+    dispatch(createNewOrder(orderData))
+      .then((newOrderId) => {
+        console.log(`New order created with ID: ${newOrderId}`);
+      })
+      .catch((error) => {
+        console.error("Error creating order:", error);
+      });
+  };
 
   return (
     <section className="container">
-      <div className="summaryAlignment">
-      </div>
+      <div className="summaryAlignment"></div>
       <div className="summary">
         <ul>
           <li>
@@ -105,7 +121,9 @@ function Summary({ subTotal, tax }) {
       </div>
 
       <div className="checkout">
-        <button type="button">Place Order</button>
+        <button onClick={handleSubmit} type="button">
+          Place Order
+        </button>
       </div>
     </section>
   );
@@ -148,7 +166,12 @@ export default function Cart() {
             onChangeProductQuantity={onChangeProductQuantity}
             onRemoveProduct={onRemoveProduct}
           />
-          <Summary subTotal={subTotal} tax={TAX} />
+          <Summary
+            subTotal={subTotal}
+            tax={TAX}
+            dispatch={dispatch}
+            products={products}
+          />
         </div>
       ) : (
         <div className="empty-product">
