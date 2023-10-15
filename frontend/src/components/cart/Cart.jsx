@@ -183,7 +183,7 @@ export default function Cart() {
           <div className="empty-product">
             <h3>There are no products in your cart.</h3>
             <button className="button1" onClick={() => navigate("/")}>
-              Shopping now
+              Add more items
             </button>
           </div>
         )}
