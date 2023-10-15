@@ -169,27 +169,31 @@ const NotificationBell = () => {
           })}
         </p>
         <h3>Products:</h3>
-        {selectedOrder?.products.map((product, index) => (
-          <div key={index} style={{ display: "flex", marginBottom: "10px" }}>
-            <img
-              src={product.image}
-              alt={product.name}
-              style={{ marginRight: "10px" }}
-            />
-            <div>
-              <h4>{product.name}</h4>
-              <p>{product.description}</p>
-              <p>
-                <strong>Price:</strong> ${product.price.toFixed(2)}
-              </p>
-              <p>
-                <strong>Quantity:</strong> {product.quantity}
-              </p>
+        {selectedOrder &&
+          selectedOrder.products &&
+          selectedOrder.products.map((product, index) => (
+            <div key={index} style={{ display: "flex", marginBottom: "10px" }}>
+              <img
+                src={product.image}
+                alt={product.name}
+                style={{ marginRight: "10px" }}
+              />
+              <div>
+                <h4>{product.name}</h4>
+                <p>{product.description}</p>
+                <p>
+                  <strong>Price:</strong> $
+                  {product.price ? product.price.toFixed(2) : 0}
+                </p>
+                <p>
+                  <strong>Quantity:</strong> {product.quantity}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         <p>
-          <strong>Total Price:</strong> ${selectedOrder?.totalPrice.toFixed(2)}
+          <strong>Total Price:</strong> $
+          {selectedOrder?.totalPrice ? selectedOrder.totalPrice.toFixed(2) : 0}
         </p>
         <div onClick={(e) => e.stopPropagation()}>
           <PayPalButtons
