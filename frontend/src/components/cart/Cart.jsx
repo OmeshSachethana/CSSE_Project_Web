@@ -41,7 +41,7 @@ function ProductList({ products, onChangeProductQuantity, onRemoveProduct }) {
               <div className="col left">
                 <div className="thumbnail">
                   <a href="#">
-                    <img src={product.image} alt={product.name} />
+                    <img src={product.imageUrl} alt={product.name} />
                   </a>
                 </div>
                 <div className="detail">
@@ -183,7 +183,7 @@ export default function Cart() {
           <div className="empty-product">
             <h3>There are no products in your cart.</h3>
             <button className="button1" onClick={() => navigate("/")}>
-              Shopping now
+              Add more items
             </button>
           </div>
         )}

@@ -3,6 +3,8 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import supplierReducer from "./slices/supplierSlice";
 import cartSlice from "./slices/cartSlice";
+import orderSlice from "./slices/orderSlice";
+import productSlice from "./slices/productSlice";
 
 const persistConfig = {
   key: "root",
@@ -12,6 +14,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   supplier: supplierReducer,
   cart: cartSlice,
+  order: orderSlice,
+  product: productSlice,
 });
 
 const customizedMiddleware = getDefaultMiddleware({
