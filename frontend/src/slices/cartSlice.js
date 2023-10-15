@@ -1,30 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  products: [
-    {
-      image: "https://via.placeholder.com/200x150",
-      name: "PRODUCT ITEM NUMBER 1",
-      description: "Description for product item number 1",
-      price: 5.99,
-      quantity: 2,
-    },
-    {
-      image: "https://via.placeholder.com/200x150",
-      name: "PRODUCT ITEM NUMBER 2",
-      description: "Description for product item number 1",
-      price: 9.99,
-      quantity: 1,
-    },
-  ],
-};
-
 const cartSlice = createSlice({
   name: "cart",
-  initialState,
+  initialState: {
+    products: [],
+  },
   reducers: {
-    setProducts(state, action) {
-      state.products = action.payload;
+    addToCart: (state, action) => {
+      const product = action.payload;
+      const productIndex = state.products.findIndex(
+        (p) => p.name === product.name
+      );
+
+      if (productIndex >= 0) {
+        // If product is already in cart, increment quantity
+        state.products[productIndex].quantity += 1;
+      } else {
+        // If product is not in cart, add it
+        state.products.push({ ...product, quantity: 1 });
+      }
     },
 
     changeProductQuantity: (state, action) => {
@@ -48,6 +42,7 @@ export const {
   changeProductQuantity,
   removeProduct,
   clearCart,
+  addToCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
