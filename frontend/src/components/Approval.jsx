@@ -23,42 +23,44 @@ const Approvals = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Approvals</h1>
+    <div className="container mx-auto p-8">
+      <h1 className="text-4xl font-bold mb-8 text-center">Order Approvals</h1>
       {orders
         .filter(order => order.approveStatus === 'pending')
         .map(order => (
-          <div key={order.id} className="border p-4 mb-4">
-            <h2 className="text-xl font-bold mb-2">Order ID: {order.id}</h2>
-            <table className="min-w-full">
-              <thead>
-                <tr>
-                  <th className="text-left">Name</th>
-                  <th className="text-center">Price</th>
-                  <th className="text-center">Quantity</th>
-                  <th className="text-center">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {order.products.map(product => (
-                  <tr key={product.id}>
-                    <td className="text-left">{product.name}</td>
-                    <td className="text-center">{product.price}</td>
-                    <td className="text-center">{product.quantity}</td>
-                    <td className="text-center">{product.price * product.quantity}</td>
+          <div key={order.id} className="bg-white p-8 rounded-lg mb-8 shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-center">Order ID: {order.id}</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="py-2 px-4 border">Name</th>
+                    <th className="py-2 px-4 border text-center">Price</th>
+                    <th className="py-2 px-4 border text-center">Quantity</th>
+                    <th className="py-2 px-4 border text-center">Total</th>
                   </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colSpan="3" className="text-right font-bold">Total Price:</td>
-                  <td className="font-bold">{order.products.reduce((total, product) => total + (product.price * product.quantity), 0)}</td>
-                </tr>
-              </tfoot>
-            </table>
-            <div className="mt-4 flex justify-end">
-              <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleApprove(order.id)}>Approve</button>
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2" onClick={() => handleDeny(order.id)}>Deny</button>
+                </thead>
+                <tbody>
+                  {order.products.map(product => (
+                    <tr key={product.id}>
+                      <td className="py-2 px-4 border">{product.name}</td>
+                      <td className="py-2 px-4 border text-center">{product.price}</td>
+                      <td className="py-2 px-4 border text-center">{product.quantity}</td>
+                      <td className="py-2 px-4 border text-center">{product.price * product.quantity}</td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colSpan="3" className="py-2 px-4 border text-right font-bold">Total Price:</td>
+                    <td className="py-2 px-4 border font-bold">{order.products.reduce((total, product) => total + (product.price * product.quantity), 0)}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div className="flex justify-end mt-4">
+              <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={() => handleApprove(order.id)}>Approve</button>
+              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDeny(order.id)}>Deny</button>
             </div>
           </div>
         ))}
