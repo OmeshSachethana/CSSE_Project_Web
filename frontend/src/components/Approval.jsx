@@ -24,7 +24,7 @@ const Approvals = () => {
 
   return (
     <div>
-      <h1>Approvals</h1>
+      <h1 className="text-2xl font-bold mb-4">Approvals</h1>
       {orders
         .filter(order => order.approveStatus === 'pending')
         .map(order => (
@@ -33,19 +33,19 @@ const Approvals = () => {
             <table className="min-w-full">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
+                  <th className="text-left">Name</th>
+                  <th className="text-center">Price</th>
+                  <th className="text-center">Quantity</th>
+                  <th className="text-center">Total</th>
                 </tr>
               </thead>
               <tbody>
                 {order.products.map(product => (
                   <tr key={product.id}>
-                    <td>{product.name}</td>
-                    <td>{product.price}</td>
-                    <td>{product.quantity}</td>
-                    <td>{product.price * product.quantity}</td>
+                    <td className="text-left">{product.name}</td>
+                    <td className="text-center">{product.price}</td>
+                    <td className="text-center">{product.quantity}</td>
+                    <td className="text-center">{product.price * product.quantity}</td>
                   </tr>
                 ))}
               </tbody>
@@ -56,7 +56,7 @@ const Approvals = () => {
                 </tr>
               </tfoot>
             </table>
-            <div className="mt-4">
+            <div className="mt-4 flex justify-end">
               <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleApprove(order.id)}>Approve</button>
               <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2" onClick={() => handleDeny(order.id)}>Deny</button>
             </div>
