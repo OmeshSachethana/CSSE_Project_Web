@@ -9,6 +9,10 @@ import ProductUpdateForm from "../components/Product/UpdateProduct";
 import ProductForm from "../components/Product/CreateProduct";
 import Cart from "../components/cart/Cart";
 import Products from "../components/Products";
+import Approvals from "../components/Approval";
+import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
+
 
 const PageRoutes = () => {
   return (
@@ -21,6 +25,9 @@ const PageRoutes = () => {
       <Route path="/products" element={<ProductList />} />
       <Route path="/products/new" element={<ProductForm />} />
       <Route path="/products/update/:id" element={<ProductUpdateForm />} />
+      <Route path="/approvals" element={<Approvals />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 };

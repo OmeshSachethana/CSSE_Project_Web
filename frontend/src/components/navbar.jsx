@@ -1,7 +1,15 @@
 import React from "react";
 import NotificationBell from "./notifications";
+import { FaShoppingCart } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const products = useSelector((state) => state.cart.products);
+  const itemsInCart = products.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
+
   return (
     <nav className="bg-gray-800 p-4 flex justify-between items-center">
       <h1 className="text-white text-2xl font-semibold">C O N S T R O</h1>
@@ -36,9 +44,14 @@ const Navbar = () => {
             Manager
           </a>
         </li>
-        <li>
-          <a href="/cart" className="text-white hover:text-blue-500">
-            Cart
+        <li className="relative">
+          <a href="/cart" className="text-white hover:text-blue-500 text-2xl">
+            <FaShoppingCart />
+            {itemsInCart > 0 && (
+              <span className="absolute top-[-4px] right-[-4px] inline-block bg-red-500 text-white text-xs px-1 rounded-full">
+                {itemsInCart}
+              </span>
+            )}
           </a>
         </li>
         <ul className="flex space-x-8">
