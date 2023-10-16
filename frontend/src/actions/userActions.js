@@ -1,4 +1,3 @@
-// src/user/actions/userActions.js
 import * as userService from '../services/userService';
 import { loginUser as login, registerUser as register } from '../slices/userSlice';
 

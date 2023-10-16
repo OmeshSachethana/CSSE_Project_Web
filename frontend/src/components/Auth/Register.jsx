@@ -1,4 +1,3 @@
-// src/user/components/Register.jsx
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../actions/userActions';
