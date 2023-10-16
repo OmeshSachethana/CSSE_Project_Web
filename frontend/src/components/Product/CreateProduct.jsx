@@ -95,12 +95,13 @@ const ProductForm = () => {
               />
             </div>
             <div className="flex justify-between items-center">
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none"
-              >
-                Add Product
-              </button>
+                <button
+                    type="submit"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none"
+                >
+                    Add Product
+                </button>
+            
               <Link to="/products">
                 <button className="bg-gray-300 text-black px-4 py-2 rounded-md focus:outline-none">
                   Back

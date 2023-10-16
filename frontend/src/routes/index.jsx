@@ -17,7 +17,6 @@ const PageRoutes = () => {
       <Route path="/suppliers" element={<SupplierList />} />
       <Route path="/suppliers/new" element={<SupplierForm />} />
       <Route path="/suppliers/update/:id" element={<SupplierUpdateForm />} />
-      <Route path="/products" element={<Products />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/products" element={<ProductList />} />
       <Route path="/products/new" element={<ProductForm />} />
