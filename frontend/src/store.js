@@ -2,6 +2,7 @@ import { configureStore, combineReducers, getDefaultMiddleware  } from "@reduxjs
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import supplierReducer from "./slices/supplierSlice";
+import productReducer from "./slices/productSlice";
 import cartSlice from "./slices/cartSlice";
 import orderSlice from "./slices/orderSlice";
 import productSlice from "./slices/productSlice";
