@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const db = require('./firebaseConfig');
+const express = require("express");
+const cors = require("cors");
+const db = require("./firebaseConfig");
 
 const app = express();
 app.use(express.json());
@@ -17,4 +17,4 @@ app.use('/suppliers', supplierRoutes);
 app.use('/orders', orderRoutes);
 app.use('/products', productRoutes);
 
-app.listen(3000, () => console.log('Server started on port 3000'));
+app.listen(3000, () => console.log("Server started on port 3000"));

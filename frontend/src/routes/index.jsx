@@ -8,6 +8,7 @@ import ProductList from "../components/Product/ProductList";
 import ProductUpdateForm from "../components/Product/UpdateProduct";
 import ProductForm from "../components/Product/CreateProduct";
 import Cart from "../components/cart/Cart";
+import Products from "../components/Products";
 
 const PageRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const PageRoutes = () => {
       <Route path="/suppliers" element={<SupplierList />} />
       <Route path="/suppliers/new" element={<SupplierForm />} />
       <Route path="/suppliers/update/:id" element={<SupplierUpdateForm />} />
+      <Route path="/products" element={<Products />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/products" element={<ProductList />} />
       <Route path="/products/new" element={<ProductForm />} />

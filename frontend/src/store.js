@@ -5,6 +5,7 @@ import supplierReducer from "./slices/supplierSlice";
 import productReducer from "./slices/productSlice";
 import cartSlice from "./slices/cartSlice";
 import orderSlice from "./slices/orderSlice";
+import productSlice from "./slices/productSlice";
 
 const persistConfig = {
   key: "root",
@@ -15,7 +16,7 @@ const rootReducer = combineReducers({
   supplier: supplierReducer,
   cart: cartSlice,
   order: orderSlice,
-  product: productReducer,
+  product: productSlice,
 });
 
 const customizedMiddleware = getDefaultMiddleware({

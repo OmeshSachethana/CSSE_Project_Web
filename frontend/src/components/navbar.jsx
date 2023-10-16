@@ -27,6 +27,11 @@ const Navbar = () => {
           </a>
         </li>
         <li>
+          <a href="/products" className="text-white hover:text-blue-500">
+            Products
+          </a>
+        </li>
+        <li>
           <a href="#" className="text-white hover:text-blue-500">
             Manager
           </a>

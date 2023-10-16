@@ -41,7 +41,7 @@ function ProductList({ products, onChangeProductQuantity, onRemoveProduct }) {
               <div className="col left">
                 <div className="thumbnail">
                   <a href="#">
-                    <img src={product.image} alt={product.name} />
+                    <img src={product.imageUrl} alt={product.name} />
                   </a>
                 </div>
                 <div className="detail">
