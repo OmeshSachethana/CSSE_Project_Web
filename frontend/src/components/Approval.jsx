@@ -1,6 +1,6 @@
 // src/components/Approvals.js
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOrders, updateExistingOrder } from '../actions/orderActions';
 
@@ -12,46 +12,48 @@ const Approvals = () => {
     dispatch(fetchOrders());
   }, [dispatch]);
 
-  const handleApprove = (id) => {
-    const updatedOrder = { ...orders.find(order => order.id === id), approveStatus: 'approved' };
-    dispatch(updateExistingOrder(id, updatedOrder));
+  const handleApprove = (orderId, productId) => {
+    const updatedOrder = orders.map(order =>
+      order.id === orderId
+        ? { ...order, products: order.products.map(product =>
+            product.id === productId ? { ...product, approveStatus: 'approved' } : product
+          )}
+        : order
+    );
+
+    dispatch(updateExistingOrder(orderId, updatedOrder));
   };
 
-  const handleDeny = (id) => {
-    const updatedOrder = { ...orders.find(order => order.id === id), approveStatus: 'denied' };
-    dispatch(updateExistingOrder(id, updatedOrder));
+  const handleDeny = (orderId, productId) => {
+    const updatedOrder = orders.map(order =>
+      order.id === orderId
+        ? { ...order, products: order.products.map(product =>
+            product.id === productId ? { ...product, approveStatus: 'denied' } : product
+          )}
+        : order
+    );
+
+    dispatch(updateExistingOrder(orderId, updatedOrder));
   };
 
   return (
     <div>
       <h1>Approvals</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders
-            .filter(order => order.approveStatus === 'pending')
-            .map(order => (
-              <tr key={order.id}>
-                <td>{order.products.name}</td>
-                <td>{order.products.price}</td>
-                <td>{order.products.quantity}</td>
-                <td>{order.totalPrice}</td>
-                <td>
-                  <button onClick={() => handleApprove(order.id)}>Approve</button>
-                  <button onClick={() => handleDeny(order.id)}>Deny</button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      {orders.map(order =>
+        order.approveStatus === 'pending' &&
+        order.products.map(product => (
+          <div key={product.id}>
+            <p>Name: {product.name}</p>
+            <p>Price: {product.price}</p>
+            <p>Quantity: {product.quantity}</p>
+            <p>Total: {product.price * product.quantity}</p>
+            <p>
+              <button onClick={() => handleApprove(order.id, product.id)}>Approve</button>
+              <button onClick={() => handleDeny(order.id, product.id)}>Deny</button>
+            </p>
+          </div>
+        ))
+      )}
     </div>
   );
 };
