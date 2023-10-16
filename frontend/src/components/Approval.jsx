@@ -12,25 +12,13 @@ const Approvals = () => {
     dispatch(fetchOrders());
   }, [dispatch]);
 
-  const handleApprove = (orderId, productId) => {
-    const updatedOrder = {
-      ...orders.find(order => order.id === orderId),
-      products: orders.find(order => order.id === orderId).products.map(product =>
-        product.id === productId ? { ...product, approveStatus: 'approved' } : product
-      )
-    };
-
+  const handleApprove = (orderId) => {
+    const updatedOrder = { ...orders.find(order => order.id === orderId), approveStatus: 'approved' };
     dispatch(updateExistingOrder(orderId, updatedOrder));
   };
 
-  const handleDeny = (orderId, productId) => {
-    const updatedOrder = {
-      ...orders.find(order => order.id === orderId),
-      products: orders.find(order => order.id === orderId).products.map(product =>
-        product.id === productId ? { ...product, approveStatus: 'denied' } : product
-      )
-    };
-
+  const handleDeny = (orderId) => {
+    const updatedOrder = { ...orders.find(order => order.id === orderId), approveStatus: 'denied' };
     dispatch(updateExistingOrder(orderId, updatedOrder));
   };
 
@@ -49,7 +37,6 @@ const Approvals = () => {
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Total</th>
-                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -59,14 +46,14 @@ const Approvals = () => {
                     <td>{product.price}</td>
                     <td>{product.quantity}</td>
                     <td>{product.price * product.quantity}</td>
-                    <td>
-                      <button onClick={() => handleApprove(order.id, product.id)}>Approve</button>
-                      <button onClick={() => handleDeny(order.id, product.id)}>Deny</button>
-                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            <div className="mt-4">
+              <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleApprove(order.id)}>Approve</button>
+              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2" onClick={() => handleDeny(order.id)}>Deny</button>
+            </div>
           </div>
         ))}
     </div>
