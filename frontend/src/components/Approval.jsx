@@ -23,21 +23,21 @@ const Approvals = () => {
   };
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Order Approvals</h1>
+    <div className="container mx-auto p-4 bg-gray-100">
+      <h1 className="text-4xl font-bold mb-6 text-center text-blue-900">Order Approvals</h1>
       {orders
         .filter(order => order.approveStatus === 'pending')
         .map(order => (
-          <div key={order.id} className="bg-white p-8 rounded-lg mb-8 shadow-lg">
-            <h2 className="text-2xl font-bold mb-4 text-center">Order ID: {order.id}</h2>
+          <div key={order.id} className="bg-white p-6 mb-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-center text-blue-900">Order ID: {order.id}</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="py-2 px-4 border">Name</th>
-                    <th className="py-2 px-4 border text-center">Price</th>
-                    <th className="py-2 px-4 border text-center">Quantity</th>
-                    <th className="py-2 px-4 border text-center">Total</th>
+                    <th className="py-2 px-4 border bg-blue-100 text-blue-900">Name</th>
+                    <th className="py-2 px-4 border bg-blue-100 text-center text-blue-900">Price</th>
+                    <th className="py-2 px-4 border bg-blue-100 text-center text-blue-900">Quantity</th>
+                    <th className="py-2 px-4 border bg-blue-100 text-center text-blue-900">Total</th>
                   </tr>
                 </thead>
                 <tbody>
