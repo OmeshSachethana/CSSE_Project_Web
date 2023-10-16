@@ -7,6 +7,8 @@ import SupplierForm from "../components/Supplier/CreateSupplier";
 import Cart from "../components/cart/Cart";
 import Products from "../components/Products";
 import Approvals from "../components/Approval";
+import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
 
 
 const PageRoutes = () => {
@@ -19,6 +21,8 @@ const PageRoutes = () => {
       <Route path="/products" element={<Products />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/approvals" element={<Approvals />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 };
