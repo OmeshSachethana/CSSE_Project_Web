@@ -3,10 +3,16 @@ const serviceAccount = require('../serviceAccountKey.json');
 
 console.log('Initializing Firebase Admin SDK');
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
+try {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
 
-const db = admin.firestore();
+  const db = admin.firestore();
 
-module.exports = { admin, db };
+  console.log('Firebase Admin SDK initialized');
+
+  module.exports = { admin, db };
+} catch (error) {
+  console.error('Error initializing Firebase Admin SDK', error);
+}

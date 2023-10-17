@@ -1,4 +1,4 @@
-const db = require("../firebaseConfig");
+const { db } = require("../firebaseConfig");
 
 class Order {
   constructor(
