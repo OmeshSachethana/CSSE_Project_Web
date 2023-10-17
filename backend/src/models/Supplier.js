@@ -1,4 +1,4 @@
-const db = require('../firebaseConfig');
+const { db } = require('../firebaseConfig');
 
 class Supplier {
   constructor(name, contactName, telephone, email) {
