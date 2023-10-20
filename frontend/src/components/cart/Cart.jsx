@@ -97,6 +97,12 @@ function Summary({ subTotal, tax, dispatch, products }) {
       totalPrice: total,
       approveStatus: "pending",
     };
+
+    if (total > 100000) {
+      alert("Total price exceeds 100000!");
+      return;
+    }
+
     dispatch(createNewOrder(orderData))
       .then(() => {
         alert("Order successfully sent for approval!");
