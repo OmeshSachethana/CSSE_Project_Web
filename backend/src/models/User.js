@@ -13,7 +13,7 @@ exports.getById = async (id) => {
 };
 
 exports.create = async (userData) => {
-  const docRef = await db.collection('users').add(userData);
+  const docRef = await db.collection('users').doc(userData.uid).set(userData);
   return docRef.id;
 };
 
