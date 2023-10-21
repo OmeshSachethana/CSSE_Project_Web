@@ -15,7 +15,7 @@ const Navbar = () => {
       <h1 className="text-white text-2xl font-semibold">C O N S T R O</h1>
       <ul className="flex space-x-8">
         <li>
-          <a href="/" className="text-white hover:text-blue-500">
+          <a href="/home" className="text-white hover:text-blue-500">
             Home
           </a>
         </li>
@@ -24,11 +24,11 @@ const Navbar = () => {
             Site Manager
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="#" className="text-white hover:text-blue-500">
             Accountant
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="/suppliers" className="text-white hover:text-blue-500">
             Supplier
@@ -60,7 +60,7 @@ const Navbar = () => {
           </li>
         </ul>
         <li>
-          <a href="#" className="text-white hover:text-blue-500">
+          <a href="/login" className="text-white hover:text-blue-500">
             Login
           </a>
         </li>

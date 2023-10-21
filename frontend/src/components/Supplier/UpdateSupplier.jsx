@@ -4,9 +4,11 @@ import { useParams } from 'react-router-dom';
 import { fetchSupplierById, updateExistingSupplier } from '../../actions/supplierActions';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import {  useNavigate } from 'react-router-dom';
 
 const SupplierUpdateForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   const selectedSupplier = useSelector((state) => state.supplier.selectedSupplier);
   const [formData, setFormData] = useState({
@@ -45,6 +47,7 @@ const SupplierUpdateForm = () => {
     dispatch(updateExistingSupplier(id, formData))
       .then(() => {
         console.log(`Supplier updated with ID: ${id}`);
+        navigate('/suppliers');
         // Redirect or show success message
       })
       .catch((error) => {
