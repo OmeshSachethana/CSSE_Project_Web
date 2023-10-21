@@ -95,18 +95,20 @@ function Summary({ subTotal, tax, dispatch, products }) {
       date: new Date(),
       products: products,
       totalPrice: total,
-      approveStatus: "pending",
+      approveStatus: "approved",
     };
 
     if (total > 100000) {
-      alert("Total price exceeds 100,000!");
-      return;
+      orderData.approveStatus = "pending";
+      alert(
+        "Total price exceeds 100,000! Your order has been sent for approval."
+      );
+    } else {
+      alert("Your order has been placed!");
     }
 
     dispatch(createNewOrder(orderData))
-      .then(() => {
-        alert("Order successfully sent for approval!");
-      })
+      .then(() => {})
       .catch((error) => {
         console.error("Error creating order:", error);
       });
