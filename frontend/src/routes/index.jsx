@@ -17,6 +17,7 @@ import Register from "../components/Auth/Register";
 const PageRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<Register />} />
       <Route path="/home" element={<Home />} />
       <Route path="/suppliers" element={<SupplierList />} />
       <Route path="/suppliers/new" element={<SupplierForm />} />
@@ -27,7 +28,7 @@ const PageRoutes = () => {
       <Route path="/products/update/:id" element={<ProductUpdateForm />} />
       <Route path="/approvals" element={<Approvals />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Register />} />
+      
     </Routes>
   );
 };

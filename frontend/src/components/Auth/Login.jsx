@@ -20,7 +20,7 @@ function Login() {
   };
 
   const handleRegisterClick = () => {
-    navigate('/register'); // Navigating to the register page
+    navigate('/home'); // Navigating to the register page
   };
 
   return (
