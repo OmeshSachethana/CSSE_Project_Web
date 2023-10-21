@@ -20,7 +20,7 @@ const Navbar = () => {
           </a>
         </li>
         <li>
-          <a href="#" className="text-white hover:text-blue-500">
+          <a href="/approvals" className="text-white hover:text-blue-500">
             Site Manager
           </a>
         </li>
