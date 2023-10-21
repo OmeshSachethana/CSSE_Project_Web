@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOrders, updateExistingOrder } from '../actions/orderActions';
+import Navbar from './Navbar';
+import Footer from './Footer'; 
 
 const Approvals = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ const Approvals = () => {
   };
 
   return (
+    <div>
+      <Navbar />
     <div className="container mx-auto p-4 bg-gray-100">
       <h1 className="text-4xl font-bold mb-6 text-center text-blue-900">Order Approvals</h1>
       {orders
@@ -64,6 +68,7 @@ const Approvals = () => {
             </div>
           </div>
         ))}
+    </div>
     </div>
   );
 };

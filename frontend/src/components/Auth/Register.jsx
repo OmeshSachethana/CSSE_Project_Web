@@ -12,9 +12,12 @@ const RegisterForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    username: '',
     age: '',
-    phoneNumber: '',
+    city: '',
+    contactNumber: '',
     address: '',
+    profileImageURL: '',
   });
 
   const handleChange = (e) => {
@@ -34,11 +37,14 @@ const RegisterForm = () => {
       await dispatch(createNewUser({
         uid: user.uid,
         age: formData.age,
-        phoneNumber: formData.phoneNumber,
-        address: formData.address
+        contactNumber: formData.phoneNumber,
+        address: formData.address,
+        username: '',
+        city: '',
+        profileImageURL: '',
       }));
 
-      navigate('/'); // navigate to homepage
+      navigate('/home'); // navigate to homepage
     } catch (error) {
       console.error('Error creating user:', error);
     }
