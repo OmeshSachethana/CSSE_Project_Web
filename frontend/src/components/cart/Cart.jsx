@@ -99,7 +99,7 @@ function Summary({ subTotal, tax, dispatch, products }) {
     };
 
     if (total > 100000) {
-      alert("Total price exceeds 100000!");
+      alert("Total price exceeds 100,000!");
       return;
     }
 

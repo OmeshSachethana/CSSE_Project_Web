@@ -6,7 +6,7 @@ import {
   updateExistingOrder,
   fetchOrderById,
 } from "../actions/orderActions";
-import Modal from "react-modal"; // You need to install this package
+import Modal from "react-modal";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const NotificationBell = () => {
@@ -148,8 +148,8 @@ const NotificationBell = () => {
         onRequestClose={() => setModalIsOpen(false)}
         style={{
           content: {
-            width: "50%", // Adjust this value as needed
-            margin: "0 auto", // This centers the modal horizontally
+            width: "50%",
+            margin: "0 auto",
           },
         }}
       >
@@ -174,9 +174,9 @@ const NotificationBell = () => {
           selectedOrder.products.map((product, index) => (
             <div key={index} style={{ display: "flex", marginBottom: "10px" }}>
               <img
-                src={product.image}
+                src={product.imageUrl}
                 alt={product.name}
-                style={{ marginRight: "10px" }}
+                style={{ marginRight: "10px", width: "150px" }}
               />
               <div>
                 <h4>{product.name}</h4>
@@ -191,7 +191,7 @@ const NotificationBell = () => {
               </div>
             </div>
           ))}
-        <p>
+        <p className="mb-4">
           <strong>Total Price:</strong> $
           {selectedOrder?.totalPrice ? selectedOrder.totalPrice.toFixed(2) : 0}
         </p>
@@ -210,21 +210,18 @@ const NotificationBell = () => {
             }}
             onApprove={(data, actions) => {
               return actions.order.capture().then((details) => {
-                // Close the modal
                 setModalIsOpen(false);
 
-                // Call your server to update the order status in the database
+                // update the order status in the database
                 handleOrderUpdate();
 
                 // Close PayPal window
                 actions.order.close();
 
-                // Log the transaction completion message
                 console.log(
                   "Transaction completed by " + details.payer.name.given_name
                 );
 
-                // OPTIONAL: Call your server to save the transaction
                 return fetch("/paypal-transaction-complete", {
                   method: "post",
                   body: JSON.stringify({
