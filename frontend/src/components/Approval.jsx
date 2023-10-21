@@ -69,7 +69,6 @@ const Approvals = () => {
           </div>
         ))}
     </div>
-    <Footer />
     </div>
   );
 };
