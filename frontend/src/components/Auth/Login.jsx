@@ -32,7 +32,7 @@ function Login() {
         />
         <button 
           onClick={signIn} 
-          className="w-full bg-primary hover:bg-secondary text-white font-semibold p-2 mt-5 rounded"
+          className="w-full bg-primary hover:bg-secondary text-black font-semibold p-2 mt-5 rounded"
         >
           Sign In
         </button>
