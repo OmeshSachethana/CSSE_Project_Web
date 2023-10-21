@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux';
 import { createNewSupplier } from '../../actions/supplierActions';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SupplierForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     contactName: '',
@@ -26,6 +27,7 @@ const SupplierForm = () => {
     dispatch(createNewSupplier(formData))
       .then((newSupplierId) => {
         console.log(`New supplier created with ID: ${newSupplierId}`);
+        navigate('/suppliers');
         // Reset form or redirect to another page
       })
       .catch((error) => {
