@@ -1,40 +1,49 @@
-const db = require('../firebaseConfig');
-const User = require('../models/User');
+// src/controllers/userController.js
 
-exports.getUsers = async (req, res) => {
-  const snapshot = await db.collection('Users').get();
-  let users = [];
-  snapshot.forEach(doc => {
-    let id = doc.id;
-    let userData = doc.data();
-    let user = new User(id, userData.name, userData.age, userData.address);
-    users.push(user);
-  });
-  res.send(users);
+const User = require('../models/User.js');
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.getAll();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-// exports.addUser = async (req, res) => {
-//   const docRef = db.collection('Users').doc();
-//   await docRef.set(req.body);
-//   res.send('User added with ID: ' + docRef.id);
-// };
-
-exports.addUser = async (req, res) => {
-  const { name, age, address } = req.body;
-  const docRef = db.collection('Users').doc();
-  await docRef.set({ name, age, address });
-  res.send('User added with ID: ' + docRef.id);
+exports.getUserById = async (req, res) => {
+  try {
+    const user = await User.getById(req.params.id);
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
+exports.createUser = async (req, res) => {
+  try {
+    const userData = req.body;
+    const id = await User.create(userData);
+    res.json({ id });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 exports.updateUser = async (req, res) => {
-  const docRef = db.collection('Users').doc(req.params.id);
-  await docRef.update(req.body);
-  res.send('User updated with ID: ' + req.params.id);
+  try {
+    await User.update(req.params.id, req.body);
+    res.json({ message: 'User updated successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 exports.deleteUser = async (req, res) => {
-  const docRef = db.collection('Users').doc(req.params.id);
-  await docRef.delete();
-  res.send('User deleted with ID: ' + req.params.id);
+  try {
+    await User.delete(req.params.id);
+    res.json({ message: 'User deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
