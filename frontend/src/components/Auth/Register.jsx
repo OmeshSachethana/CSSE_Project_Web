@@ -44,7 +44,7 @@ const RegisterForm = () => {
         profileImageURL: '',
       }));
 
-      navigate('/'); // navigate to homepage
+      navigate('/home'); // navigate to homepage
     } catch (error) {
       console.error('Error creating user:', error);
     }
